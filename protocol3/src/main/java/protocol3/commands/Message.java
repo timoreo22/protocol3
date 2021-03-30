@@ -88,12 +88,15 @@ public class Message implements CommandExecutor {
 		if (!Admin.Spies.contains(recv.getUniqueId())) {
 			recv.spigot().sendMessage(new TextComponent("§dfrom " + sendName + ": " + msg[0]));
 		}
+        if(sender instanceof Player){
 		if (!Admin.Spies.contains(((Player) sender).getUniqueId())) {
 			sender.spigot().sendMessage(new TextComponent("§dto " + recvName + ": " + msg[0]));
 		}
+        }
+        if(sender instanceof Player){
 		Replies.put(recv.getUniqueId(), ((Player) sender).getUniqueId());
 		Replies.put(((Player) sender).getUniqueId(), recv.getUniqueId());
-
+        }
 		return true;
 	}
 
